@@ -21,7 +21,16 @@ const App = () => {
         setActorname('')
         setSingername('')
         setSongposter('')
+       
     }
+
+    const deletHandler = (idx) =>{
+        console.log("index is :",idx)
+        const copyAlluser = [...Alluser]
+        copyAlluser.splice(idx,1)
+        setAlluser(copyAlluser)
+    }
+
   return (
     <div>
       <form onSubmit={(e)=>{
@@ -47,6 +56,9 @@ const App = () => {
             setSongposter(e.target.value)
         }}
         type="text" placeholder='Song Poster(Image URL)'/>
+
+       
+
         <button>Add Song</button>
       </form>
 
@@ -59,7 +71,7 @@ const App = () => {
                             <h3>Actor  : {elem.actorname}</h3>
                             <h3>Singer : {elem.singername}</h3>
                         </div>
-                   
+                        <h1  onClick={()=>{ deletHandler(idx)}} className='del'> <i class="ri-close-circle-line"></i></h1>
                 </div>
             })
         }
